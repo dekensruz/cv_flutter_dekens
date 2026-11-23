@@ -72,7 +72,7 @@ Application mobile Flutter complète présentant mon CV, mon parcours, ma famill
 Votre navigateur ne supporte peut-être pas la balise vidéo.
 </video>
 
-*Si la vidéo ne s'affiche pas, [téléchargez-la ici](screenshots/video_demo.mp4).*
+*Si la vidéo ne s'affiche pas, [téléchargez-la ici](video/video_dekens.mp4).*
 
 ##
 
