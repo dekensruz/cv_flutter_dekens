@@ -1,65 +1,80 @@
-# cv_flutter_dekens – CV de Dekens Ruzuba
+# cv_flutter_dekens – CV Dynamique de Dekens Ruzuba
 
-Application mobile Flutter qui présente mon CV, ma famille et mes coordonnées.
-L'accès à l'application se fait par une page de connexion.
+Application mobile Flutter complète présentant mon CV, mon parcours, ma famille et mes coordonnées, avec une authentification réelle et une gestion dynamique des membres de la famille via une API REST et une base de données MySQL.
 
 ## Fonctionnalités
 
-- **Connexion** : formulaire avec identifiant, mot de passe masqué (affichable via l'icône œil) et bouton « Se connecter ». Un message d'erreur s'affiche si les identifiants sont incorrects.
-- **Accueil (CV)** : photo, nom, titre, présentation, formation, compétences techniques, langues (avec niveau) et centres d'intérêt.
-- **Parcours** : expériences professionnelles (emplois, missions freelance, formations données) présentées sous forme de frise chronologique.
-- **Famille** : parents et frères & sœurs avec photo, nom et lien de parenté, affichés avec des `Card` et une `GridView`.
-- **Contact** : téléphone, e-mail, adresse, LinkedIn, GitHub et portfolio. Chaque élément est **cliquable** : il lance un appel, ouvre un e-mail, la carte ou le lien (via `url_launcher`).
-- **Navigation** : une `NavigationBar` en bas de l'écran (Accueil, Parcours, Famille, Contact) et un bouton de déconnexion.
+- **Connexion sécurisée** : Authentification via l'API avec email et mot de passe.
+- **Accueil (CV)** : Présentation, formation, compétences techniques, langues et centres d'intérêt.
+- **Parcours** : Expériences professionnelles présentées sous forme de frise chronologique.
+- **Famille (CRUD)** : Liste dynamique (API) des membres. Vous pouvez **ajouter, modifier et supprimer** des membres, avec possibilité de **téléverser une photo** et de sélectionner une date de naissance via un calendrier.
+- **Contact** : Coordonnées et réseaux sociaux cliquables (via `url_launcher`).
+- **Navigation** : `NavigationBar` fluide (Accueil, Parcours, Famille, Contact).
 
 ## Identifiants de test
 
-| Identifiant | Mot de passe |
+| Identifiant (Email) | Mot de passe |
 |-------------|--------------|
-| `dekens`    | `dekens2026` |
+| `dekens@exemple.com` | `dekens2026` |
+
+*(Si ce compte n'existe pas, créez-le via Postman sur la route `/accounts/register` de l'API)*.
+
+## Configuration requise
+
+### 1. Base de données & API (XAMPP)
+1. Démarrez **Apache** et **MySQL** depuis XAMPP.
+2. Ouvrez `http://localhost/phpmyadmin`, créez une base `api` et importez le fichier `api.sql`.
+3. Placez le dossier de l'API dans `C:\xampp\htdocs\api-test`.
+4. L'API est accessible sur `http://localhost/api-test/public`.
+
+### 2. Application Flutter
+1. Clonez ce dépôt.
+2. Exécutez `flutter pub get`.
+3. Lancez l'application avec `flutter run`.
+
+**Note pour l'émulateur Android** : L'URL de l'API est configurée sur `http://10.0.2.2/api-test/public`. Pour un appareil physique ou le web, modifiez la constante `kBaseUrl` dans `lib/main.dart`.
 
 ## Captures d'écran
 
 ### 1. Page de connexion
-
 <img src="screenshots/01_connexion.png" width="280" alt="Page de connexion">
 
 ### 2. Page d'accueil (CV)
-
 | Profil & formation | Compétences | Langues & centres d'intérêt |
 |:---:|:---:|:---:|
 | <img src="screenshots/02_accueil_1.png" width="250" alt="Profil et formation"> | <img src="screenshots/03_accueil_2.png" width="250" alt="Compétences"> | <img src="screenshots/04_accueil_3.png" width="250" alt="Langues et centres d'intérêt"> |
 
-### 3. Page Parcours (expériences)
-
+### 3. Page Parcours
 | | |
 |:---:|:---:|
 | <img src="screenshots/05_parcours_1.png" width="250" alt="Parcours 1"> | <img src="screenshots/06_parcours_2.png" width="250" alt="Parcours 2"> |
 
-### 4. Page Famille
+### 4. Page Famille (Dynamique API)
+### Liste des membres :
+<img src="screenshots/07_famille_liste.png" width="280" alt="Famille - liste">
 
-| Parents | Frères & sœurs |
-|:---:|:---:|
-| <img src="screenshots/07_famille_1.png" width="250" alt="Famille - parents"> | <img src="screenshots/08_famille_2.png" width="250" alt="Famille - frères et sœurs"> |
+### Formulaire d'ajout / modification :
+<img src="screenshots/08_famille_form.png" width="280" alt="Famille - formulaire">
 
 ### 5. Page Contact
-
 <img src="screenshots/09_contact.png" width="280" alt="Page contact">
 
-## Technologies
+### 6. Base de données MySQL (phpMyAdmin)
+<img src="screenshots/10_base_de_donnees.png" width="500" alt="Base de données MySQL">
 
-- Flutter / Dart (Material 3)
-- [`google_fonts`](https://pub.dev/packages/google_fonts) : police Plus Jakarta Sans
-- [`url_launcher`](https://pub.dev/packages/url_launcher) : appels, e-mails et liens
+---
 
-## Lancer le projet
+## Vidéo de démonstration
 
-```bash
-flutter pub get
-flutter run
-```
+*Vidéo montrant l'application Flutter communiquer avec l'API et la base de données en temps réel.*
 
-## Auteur
+<video src="video/video_dekens.mp4" controls="controls" style="max-width: 100%;">
+Votre navigateur ne supporte peut-être pas la balise vidéo.
+</video>
 
-**Dekens Ruzuba** – Développeur Fullstack & Créateur d'Agents IA, Goma (RDC)
-GitHub : [dekensruz](https://github.com/dekensruz)
+*Si la vidéo ne s'affiche pas, [téléchargez-la ici](screenshots/video_demo.mp4).*
+
+##
+
+**Par Dekens Ruzuba** – Développeur Fullstack & Créateur d'Agents IA, Goma (RDC)
+Portfolio : [Dekens Ruzuba](https://portfoliodek.netlify.app/)
